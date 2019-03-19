@@ -3,7 +3,6 @@
 mydata <- read.csv('evals.csv')
 
 
-
 # if
 
 a <- 
@@ -50,14 +49,12 @@ for (i in 1:nrow(mydata)){
 }
 
 
-
 # for + if
 for (i in 1:nrow(mydata)){
   if (mydata$gender[i] == 'male'){
     print(mydata$score[i]) 
   }
 }
-
 
 
 # for + if  VS  ifelse
@@ -70,18 +67,7 @@ for (i in 1:nrow(mydata)){
   } else mydata$quality[i] <- 'bad'
 }
 
-
-
-
-
-
 mydata$quality2 <- ifelse(mydata$score > 4, 'good', 'bad')
-
-
-
-
-
-
 
 # while
 
@@ -91,8 +77,3 @@ while(i < 51){
   print(mydata$score[i])
   i <- i+1
 }
-
-
-
-
-

@@ -20,4 +20,4 @@ res <- predict(decision_tree, test, type='class')
 
 ans <- data.frame(892:1309, res)
 colnames(ans) <- c('PassengerId', 'Survived')
-write.csv(ans, 'ans3.csv', row.names = F)
+write.csv(ans, 'ans.csv', row.names = F)

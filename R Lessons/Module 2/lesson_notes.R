@@ -13,10 +13,8 @@ library(rpart)
 decision_tree <- rpart(new~., train)
 #rpart(ЗП~., data = )
 #rpart(ЗП~a+b+c+d+..., data =)
-#. означает все переменные как НП
 predicted <- predict(decision_tree, test)
 #predicted <- predict(decision_tree, test, type = 'class')
 library(ROSE)
-#roc.curve - метрика исчисления эффективности модели, только для бинарных данных
 roc.curve(test$new, predicted)
 #confusionMatrix(test$new, predicted)

@@ -37,7 +37,6 @@ t3
 dim(t3)
 
 
-
 # plots
 
 barplot(t1)

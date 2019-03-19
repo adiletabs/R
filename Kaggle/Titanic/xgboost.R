@@ -43,5 +43,5 @@ res2 <- ifelse(res > 0.9, 1, 0)
 
 ans <- data.frame(892:1309, res2)
 colnames(ans) <- c('PassengerId', 'Survived')
-write.csv(ans, 'ans4.csv', row.names = F)
+write.csv(ans, 'ans.csv', row.names = F)
 # 0.75119

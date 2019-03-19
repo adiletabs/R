@@ -10,7 +10,6 @@ data(ToothGrowth)
 t_stat <- t.test(ToothGrowth$len[ToothGrowth$supp == 'OJ' & ToothGrowth$dose == 0.5],
        ToothGrowth$len[ToothGrowth$supp == 'VC' & ToothGrowth$dose == 2])$statictic
 
-
 lv <- read.csv('lekarstva.csv')
 t.test(lv$Pressure_before, lv$Pressure_after, paired = T)
 

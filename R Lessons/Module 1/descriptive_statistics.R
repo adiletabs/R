@@ -82,7 +82,3 @@ mean(df$mpg, na.rm = T)
 aggregate(mpg ~am, df, sd)
 
 describe(na.rm = )
-
-
-
-

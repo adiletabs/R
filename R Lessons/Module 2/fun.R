@@ -28,7 +28,6 @@ my_calc_3  <- function(x, y, z = 10){
 }
 
 
-
 ############
 
 distr1  <- rnorm(100)

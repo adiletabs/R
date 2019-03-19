@@ -78,7 +78,6 @@ diamonds %>% group_by(cut,color) %>% summarise(mean(price),
                                                sd(price),
                                                max(carat))
 
-
 sample_n()
 sample_frac(diamonds,.3)
 df_total$Id <- NULL
@@ -107,9 +106,6 @@ RMSE(test$SalePrice,pred_rf)
 RMSE(test$SalePrice,pred_lm)
 
 
-
-
-
 ### 
 rf <- randomForest(SalePrice~.,train,ntree=500,do.trace=TRUE,
                    type="regression")
@@ -119,10 +115,8 @@ fit4 <- lm(SalePrice~.,df_total)
 # varImpPlot - Feature Importance 
 varImpPlot(rf)
 
-
 pred_rf  <- predict(rf,test)
 pred_lm <- predict(fit4,test)
-
 
 RMSE(test$SalePrice,pred_rf)
 RMSE(test$SalePrice,pred_lm)

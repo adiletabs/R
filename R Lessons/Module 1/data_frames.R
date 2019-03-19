@@ -1,9 +1,7 @@
-
 # Reading data
 
 ?read.table
 ?read.csv
-
 
 mydata <- read.csv('evals.csv')
 
@@ -22,8 +20,6 @@ a <- names(mydata)
 summary(mydata)
 
 
-
-
 # Variables
 
 b <- mydata$score
@@ -37,7 +33,6 @@ mydata$score * 2
 mydata$ten_point_scale <- mydata$score * 2
 
 
-
 summary(mydata$ten_point_scale)
 
 mydata$new_varible <- 0
@@ -46,9 +41,6 @@ summary(mydata$number)
 
 nrow(mydata)
 ncol(mydata)
-
-
-
 
 
 # Subsetting
@@ -65,8 +57,6 @@ mydata[,1] == mydata$score
 mydata[,2:5]
 head(mydata[,2:5])
 
-##
-
 
 # Subsetting with condition
 
@@ -76,7 +66,6 @@ head(mydata[mydata$gender == 'female',1:3])
 
 head(subset(mydata, gender == 'female'))
 head(subset(mydata, score > 3.5))
-
 
 
 # rbind, cbind

@@ -200,7 +200,7 @@ prices <- predict(fit_best, test)
 answer <- data.frame(1461:2919, prices)
 
 colnames(answer) <- c('Id', 'SalePrice')
-write.csv(answer, 'ans_best4.csv', row.names = F)
+write.csv(answer, 'ans.csv', row.names = F)
 
 ###################################################################################
 facs <- train[,sapply(train, is.factor)]

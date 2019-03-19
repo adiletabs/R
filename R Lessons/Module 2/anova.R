@@ -21,7 +21,6 @@ DV ~ (IV1 + IV2 + IV3)^2 # main effects and all possible interactions up to leve
 DV ~ IV1 + Error(subject/IV1) # repeated measures
 
 
-
 # reading data
 
 mydata <- read.csv('shops.csv')
@@ -33,7 +32,6 @@ boxplot(price ~ origin, data=mydata)
 
 ggplot(mydata, aes(x = origin, y = price)) + 
   geom_boxplot()
-
 
 
 fit <- aov(price ~ origin, data=mydata)
@@ -62,7 +60,6 @@ summary(fit3)
 
 fit4 <- aov(price ~ origin * store, data=mydata)
 summary(fit4)
-
 
 
 # Pairwise comparisons

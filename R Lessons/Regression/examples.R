@@ -12,9 +12,6 @@ library(lubridate)
 data("diamonds")
 df <- diamonds
 diamonds <- diamonds %>% mutate_if(is.integer,as.numeric)
-# Определим зависимую переменную
-# одну количественную price
-# другую качественную cut
 
 # rpart   
 # lm
@@ -23,21 +20,18 @@ diamonds <- diamonds %>% mutate_if(is.integer,as.numeric)
 # randomForest classification
 # xgboost
 
-# Поделим данные 70 на 30, 30 нужна
-# для объективной проверки эф-ти модели.
-
 index <- createDataPartition(diamonds$cut,
                              p=0.7,
-                             list=FALSE) # взять 70% случайных индексов и сохранить
-                                         # в index
-train_fac <- diamonds[index,]   # 70% данных для тренировки модели
-test_fac <- diamonds[-index,]   # 30% для тестирования
+                             list=FALSE)
+                                         
+train_fac <- diamonds[index,]   # 70% 
+test_fac <- diamonds[-index,]   # 30% 
 
 index_num <- createDataPartition(diamonds$price,
                                  p=0.7,
                                  list=FALSE)
 train_num <- diamonds[index_num,]
-test_num <- diamonds[-index_num,] # то же самое для тренировки num переменной price
+test_num <- diamonds[-index_num,] 
 
 
 # rpart
@@ -70,7 +64,6 @@ summary(fit)
 summary(fit_log)
 
 
-
 str(train_num)
 check <- lm((fit$residuals^2)~.,sample_n(train_num,4999))
 summary(check)
@@ -100,7 +93,6 @@ rf_fac <- randomForest(cut~.,train_fac,
 predict_rf_fac <- predict(rf_fac,test_fac,type="class")
 confusionMatrix(test_fac$cut,predict_rf_fac)
 #varImpPlot(rf_fac)
-
 
 
 rf_num <- randomForest(price~.,train_num,

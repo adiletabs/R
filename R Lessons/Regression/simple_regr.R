@@ -26,4 +26,3 @@ predict(fit, new_hp)
 my_df  <- mtcars
 my_df$cyl  <- factor(my_df$cyl, labels = c("four", "six", "eight"))
 fit  <- lm(mpg ~ cyl, my_df)
-

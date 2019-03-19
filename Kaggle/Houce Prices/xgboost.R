@@ -45,4 +45,4 @@ res <- predict(fit, ctest)
 ans <- data.frame(1461:2919, res)
 
 colnames(ans) <- c('Id', 'SalePrice')
-write.csv(ans, 'ans30.csv', row.names = F)
+write.csv(ans, 'ans.csv', row.names = F)

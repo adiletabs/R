@@ -1,4 +1,4 @@
-# Time series - библиотека для работы с временными данными
+# Time series 
 # Prophet
 # xgboost
 # flexdashboard
@@ -8,19 +8,15 @@ library('prophet') # Time series model
 library('lubridate') # Handle date - tranfrom character or numeric to date
 # df$date <- ymd(df$date)
 
-# для работы с prophet необходимы две колонки
-# ds - дата, y - показатель
-# prophet хорошо работает с дневными
-
 df <- crypto_history(coin = 'bitcoin')
 df <- df[, c(4, 9)]
 
 colnames(df) <- c('ds', 'y')
 
 m <- prophet(df)
-future <- make_future_dataframe(m, periods = 100) # спрогнозировать 100 дней
+future <- make_future_dataframe(m, periods = 100) 
 forecast <- predict(m, future)
-plot(m, forecast) # синяя линия - прогноз, черная - фактические, тень - коридор ошибки
+plot(m, forecast)
 prophet_plot_components(m, forecast)
 
 f <- select(forecast, c(ds, yhat))
@@ -38,9 +34,6 @@ head(df)
 df$date <- ymd(df$date)
 
 library(prophet) # Time Series model.
-#   Для работы с prophet, необходимы две колонки
-#   ds - data, y - показатель
-#   prophet   хорошо работает с дневными
 colnames(df) <- c("ds","y")
 ?prophet
 m <- prophet(df)
@@ -50,4 +43,4 @@ plot(m,forecast)
 prophet_plot_components(m,forecast)
 
 f <- select(forecast, c(ds,yhat))
-f %>% top_n(60,ds)
+f %>% top_n(60, ds)

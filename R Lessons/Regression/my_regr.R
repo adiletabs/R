@@ -41,3 +41,4 @@ regr.calc(iris[,c(1,4)])
 ggplot(iris, aes(Sepal.Width, Petal.Width, col = Species))+
   geom_point()+
   geom_smooth(method = "lm")
+  

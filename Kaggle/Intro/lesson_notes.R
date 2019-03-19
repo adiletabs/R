@@ -3,9 +3,6 @@ library(dplyr)
 df <- read.csv('train.csv')
 # get NA by columns
 
-# apply, sapply - делает какие либо операции по столбцам или 
-# строкам
-
 # apply(data,1-row and 2-column,function(x))
 
 get_NA <- function(x)
@@ -24,8 +21,6 @@ apply(df,1,get_NA)
 ## Data engineering
 # load data
 # how to handle with NA
-# 
-#
 
 #library(ggplot2)
 #ggplot(data=df,aes(x=SalePrice))+geom_boxplot()

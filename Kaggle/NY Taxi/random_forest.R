@@ -52,4 +52,4 @@ res <- as.integer(res)
 
 ans <- data.frame(sample$id, res)
 colnames(ans) <- colnames(sample)
-write.csv(ans, 'ans6.csv', row.names = F)
+write.csv(ans, 'ans.csv', row.names = F)

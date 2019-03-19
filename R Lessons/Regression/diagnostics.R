@@ -1,12 +1,9 @@
-#
 # regression diagnostics
-# 
 
 library(ggplot2)
 
 data(swiss)
 str(swiss)
-
 
 
 # relationships between all variables

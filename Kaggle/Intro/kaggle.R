@@ -2,7 +2,7 @@ train <- read.csv("train.csv")
 sum(is.na(train))
 moda(train$Alley)
 ?mode
-# apply, sapply - делает какие-либо операции по столбцам или строкам
+
 # apply(data, x, y, function(x))
 sum(is.na(train))
 get_na <- function(x)
@@ -47,9 +47,6 @@ fit_tiny <- lm(SalePrice~., train_tiny) # 0.9081
 summary(fit_tiny)
 check_tiny <- lm((fit_tiny$residuals)^2~., train_tiny) # 0.06339
 summary(check_tiny)
-
-# as.numeric() - избавиться от лишних уровней фактора
-# one hot encoding - самое крутое решение
 
 which.max(train$Alley)
 length(train$Alley[is.na(train$Alley) == F & train$Alley == 'Pave'])

@@ -39,7 +39,7 @@ data <- as.matrix(data)
 dimnames(data) <- NULL
 
 # partition
-set.seed(1234) # в скобках может быть любое число
+set.seed(1234) 
 index <- createDataPartition(data[,14],p=0.8,list=FALSE)
 train <- data[index,c(1:13)]
 test <- data[-index,c(1:13)]
@@ -56,8 +56,8 @@ test <- scale(test,center = m,scale = s)
 
 # Create model
 
-model <- keras_model_sequential() # —реда дл€ реализации
-# —делать каркас нейронной сети
+model <- keras_model_sequential() 
+
 model %>%
   layer_dense(units = 5, activation = "relu", input_shape = c(13)) %>%
   layer_dropout(rate = 0.4) %>%
@@ -67,7 +67,6 @@ model %>%
   layer_dropout(rate = 0.2) %>%
   layer_dense(units = 1)
 
-# Compile  (определ€ютс€ метрики исчислени€ эффективности)
 model %>% compile(loss = 'mse',
                   optimizer = 'rmsprop',
                   metrics = 'mae')

@@ -21,9 +21,6 @@ head(predict(object = fit, type = "response"))
 
 my_df$prob  <- predict(object = fit, type = "response")
 
-
-
-
 library(ROCR)
 
 pred_fit <- prediction(my_df$prob, my_df$hon)
@@ -31,7 +28,6 @@ perf_fit <- performance(pred_fit,"tpr","fpr")
 plot(perf_fit, colorize=T , print.cutoffs.at = seq(0,1,by=0.1))
 auc  <- performance(pred_fit, measure = "auc")
 str(auc)
-
 
 
 perf3  <- performance(pred_fit, x.measure = "cutoff", measure = "spec")

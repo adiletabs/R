@@ -1,7 +1,4 @@
-#
 # multiple linear regression
-#
-
 
 # numeric predictors
 
@@ -53,7 +50,6 @@ ggplot(swiss, aes(x = Examination, y = Fertility, col = religious)) +
   geom_point()  + 
   geom_smooth(method = 'lm')
 
-
 #
 
 fit5 <- lm(Fertility ~ religious*Infant.Mortality*Examination, data = swiss)
@@ -77,7 +73,6 @@ fit_reduced2 <- lm(Fertility ~ Infant.Mortality + Education + Catholic + Agricul
 summary(fit_reduced2)
 
 anova(fit_full, fit_reduced2)
-
 
 # model selection
 
