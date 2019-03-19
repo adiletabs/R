@@ -1,0 +1,97 @@
+---
+title: "Iris"
+author: 'Adilet Absatov'
+date: 'June 15'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# Short description
+
+This famous (Fisher's or Anderson's) iris data set gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. The species are Iris setosa, versicolor, and virginica.
+
+### Format
+iris is a data frame with 150 cases (rows) and 5 variables (columns) named Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, and Species.
+
+iris3 gives the same data arranged as a 3-dimensional array of size 50 by 4 by 3, as represented by S-PLUS. The first dimension gives the case number within the species subsample, the second the measurements with names Sepal L., Sepal W., Petal L., and Petal W., and the third the species.
+
+### Source
+Fisher, R. A. (1936) The use of multiple measurements in taxonomic problems. Annals of Eugenics, 7, Part II, 179Ц188.
+
+The data were collected by Anderson, Edgar (1935). The irises of the Gaspe Peninsula, Bulletin of the American Iris Society, 59, 2Ц5.
+
+### Summary
+```{r}
+summary(iris)
+```
+***
+# Visualisation
+```{r}
+library('ggplot2')
+ggplot(iris, aes(x = Petal.Length, y = Petal.Width, col = Species, size = Sepal.Length))+geom_point()
+ggplot(iris, aes(x = Sepal.Width, fill = Species))+geom_bar()
+ggplot(iris, aes(x = Species, y = Petal.Length, fill = Petal.Width))+geom_boxplot()
+
+```
+***
+
+#Data analysis
+
+### Student's t-Test
+Performs one and two sample t-tests on vectors of data. —равнивает две выборки на "похожесть". „ем меньше p-value, тем более отличаютс€ две выборки. 
+  
+#### t- ритерий —тьюдента дл€ независимых выборок:
+  
+t.test(Var1 ~ Var2, data) - если перва€ переменна€ количественна€, а втора€ фактор из двух уровней
+t.test(data$Var1, data$Var2) - если обе переменные количественные
+
+#### t- ритерий —тьюдента дл€ зависимых выборок:
+
+t.test(data$Var1, data$Var2, paired = T)
+
+#### ѕроверка на схожесть Sepal.Length и Sepal.Width
+```{r}
+t.test(iris$Sepal.Length, iris$Sepal.Width)
+```
+
+###  ритерий Ѕартлетта
+ѕроводит проверку на гомогенность дисперсий. „ем меньше p-value, тем больше отличаютс€ выборки
+
+#### ѕроверка на гомогенность длины и ширины лепестка ириса
+```{r}
+bartlett.test(Petal.Length ~ Species, iris)
+```
+
+### “ест Ўапиро 
+ѕровер€ет выборку на нормальность распределени€. „ем больше p-value, тем более нормально распределение
+```{r}
+shapiro.test(iris$Petal.Length)
+```
+shapiro.test(Var1) - проверка на нормальность распределени€ переменной Var1,
+ но не удобно когда есть группирующа€ факторна€ переменна€
+ 
+ ### Fit an Analysis of Variance Model
+
+aov - определ€ет насколько один или несколько предикторов вли€ют на какую-то зависимую переменную. ¬ли€ние может быть однофакторным, двухфакторным, когда независымые переменные взаимодействуют между собой и когда кака€-то переменна€ испытана несколько раз.
+
+DV ~ IV # One-way
+
+DV ~ IV1 + IV2 # Two-way
+
+DV ~ IV1:IV2  # Two-way interaction, как вли€ет взаимодействие IV2 на IV1
+
+DV ~ IV1 + IV2 + IV1:IV2 # Main effects + interaction
+
+DV ~ IV1 * IV2  # The same: Main effects + interaction
+
+DV ~ IV1 + IV2 + IV3 + IV1:IV2
+
+DV ~ (IV1 + IV2 + IV3)^2 # main effects and all possible interactions up to level 2
+
+#### ѕример: вли€ние вида цветка на длину лепестка
+```{r}
+aov(Petal.Length ~ Species, iris)
+```
+„ем больше значение критери€, тем большее вли€ние, тем меньше p-value, тем больше вли€ние.
