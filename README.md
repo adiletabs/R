@@ -1,1 +1,1 @@
-## Data Science Class. Method Pro 2018
+## Method Pro Data Science Class. Summer 2018
